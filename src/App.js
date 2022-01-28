@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import ForgotPass from "./views/forgotpass";
+import Homepage from "./views/homepage";
+import Login from "./views/login";
+import Register from "./views/registtrationpage";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/passwordreset" element={<ForgotPass />} />
+        <Route path="/homepage" element={<Homepage />} />
+      </Routes>
+    </>
   );
 }
 
-export default App;
+function Vrushabh() {
+  return (
+    <div>
+      <div>Goodmorning India</div>
+    </div>
+  );
+}
