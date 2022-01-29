@@ -1,26 +1,24 @@
-import { Route, Routes } from "react-router-dom";
-import ForgotPass from "./views/forgotpass";
-import Homepage from "./views/homepage";
-import Login from "./views/login";
-import Register from "./views/registtrationpage";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/passwordreset" element={<ForgotPass />} />
-        <Route path="/homepage" element={<Homepage />} />
-      </Routes>
-    </>
-  );
-}
+  const [empData, setEmpData] = useState({});
 
-function Vrushabh() {
+  async function fetchEmpData() {
+    axios.get("http://localhost:8080/emp3").then((response) => {
+      //alert(response.data);
+      setEmpData(response.data);
+    });
+  }
+  useEffect(fetchEmpData);
   return (
     <div>
-      <div>Goodmorning India</div>
+      <div>Hello Every one</div>
+      <p>
+        <h1>empno : {empData.id}</h1> <br />
+        name : {empData.name} <br />
+        salary : {empData.salary} <br />
+      </p>
     </div>
   );
 }
